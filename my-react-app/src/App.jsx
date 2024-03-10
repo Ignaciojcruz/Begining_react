@@ -3,14 +3,17 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 
 export default function ParentComponent() {
-  function greetings() {
-    return 'Hello World'
-  }
+  const [name, setName] = useState('John')
 
-  return <ChildComponent greetings={greetings} />
+  return <ChildComponent name={name} setName={setName} />
   
 }
 
 function ChildComponent(props) {
-  return <p>{props.greetings()}</p>
+  return (
+    <>
+      <h1>Hello {props.name}</h1>
+      <button onClick={() => props.setName('Mark')}>Change Name</button>
+    </>
+  )
 }
