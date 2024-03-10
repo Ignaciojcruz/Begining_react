@@ -3,18 +3,16 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 
 export default function App(props) {
-  const { user } = props
-
-  let button = <button>Login</button>
-
-  if (user) {
-    button = <button>Logout</button>
-  }
+  const newEmails = 2
 
   return (
     <>
       <h1>Hello there!</h1>
-      {button}
+      {newEmails > 0 &&
+        <h2>
+          You have {newEmails} new emails in your inbox.
+        </h2>
+      }
     </>
   )
   
