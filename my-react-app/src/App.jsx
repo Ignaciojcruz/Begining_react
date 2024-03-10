@@ -6,22 +6,24 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 
 
-export default function App() {
-  
+export default function Form() {
+  const [username, setUsername] = useState();
   return (
     <>
-      {/* Se debe instalar bootstrap? */}
-      <button className="btn btn-primary">Subscribe</button>
+      <form>
+      Username:
+      <input 
+        type='text' 
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+      />
+    </form>
 
-      {/* Se debe instalar Tailwind */}
-      <button className='px-5 py-2 text-white bg-blue-500 border-2'>
-        Subscribe
-      </button>
+    <p>{username}</p>
     </>
     
-
-    
   )
+  
   
 }
 
