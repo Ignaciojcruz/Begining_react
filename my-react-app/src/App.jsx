@@ -2,25 +2,29 @@ import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 
+const pStyle = {
+  fontSize: '16px',
+  color: 'blue'
+}
+
 export default function App() {
-  // State to hold the visibility status of the paragraph
-  const [isParagraphVisible, setIsParagraphVisible] = useState(true);
 
-  // Function to toggle the visibility status of the paragraph
-  const toggleStatus = () => {
-    setIsParagraphVisible(!isParagraphVisible);
-  };
-
+  //the first set of curly brackets is used to write JavaScript expressions. 
+  // The second set of curly brackets initializes a JavaScript object.
   return (
     <>
-      <h1>Change UI Based on click</h1>
-      {isParagraphVisible && (
-        <p>This paragraph will be shown/hidden on click</p>
-      )}
-      <button onClick={toggleStatus}>
-        {isParagraphVisible ? 'Hide' : 'Show'} Paragraph
-      </button>
+      <h1 style={{ color: 'red', textAlign: 'center' }}>Hello World</h1>
+      
+      <p style={pStyle}>Hello World</p>
+      <p style={pStyle}>The weather is sunny today</p>
+
+      <p style={{ ...pStyle, color: 'green', textAlign: 'right'}}>
+        When you go to work, bring your umbrella with you
+      </p>
     </>
+    
+
+    
   )
   
 }
