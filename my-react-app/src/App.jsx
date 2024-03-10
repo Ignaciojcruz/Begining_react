@@ -2,16 +2,26 @@ import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 //import './App.css'
-import { Fragment } from 'react'
 
 
-function App() {
+export default function ParentComponent() {
   return (
-    <Fragment>
-      <h1>Hello World</h1>
-      <h2>Learning to code with React</h2>
-    </Fragment>
-  )
+    <>
+      <UserComponent />
+      <ProfileComponent />
+      <FeedComponent />
+    </>
+  );
 }
 
-export default App
+function UserComponent() {
+  return <h1> User Component </h1>;
+}
+
+function ProfileComponent() {
+  return <h1> Profile Component </h1>;
+}
+
+function FeedComponent() {
+  return <h1> Feed Component</h1>;
+}
