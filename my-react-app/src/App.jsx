@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // import styles from './App.module.css'
 // import './style.css';
@@ -7,49 +7,23 @@ import { useState } from 'react'
 
 
 export default function Form() {
-  const [username, setUsername] = useState();
-  const [usernameError, setUsernameError] = useState();
+  const[title, setTitle] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(usernameError){
-      alert('Unable to submit: Form contain errors');
-    } else {
-      alert(username);
-    }
+  useEffect(() => {
+    getData();
+  }, []);
 
-    
+  const getData = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/2');
+    const task = await response.json();
+    console.log(task);
+    setTitle(task.title);
   }
-
-  const handleUsername = e => {
-    const {value} = e.target;
-    setUsername(value);
-
-    if(value.length <= 6) {
-      setUsernameError('Username length must be more than 6 characters');
-    } else {
-      setUsername();
-    }
-  };
-
+  
   return (
     <>
-      <form onSubmit={handleSubmit}>
-      Username:
-      <input 
-        type='text' 
-        value={username}
-        onChange={handleUsername}
-      />
-      <p>{usernameError} </p>
-      <button>Submit</button>
-      </form>
-
-    
+      <h1>{title}</h1>
     </>
-    
   )
-  
-  
 }
 
