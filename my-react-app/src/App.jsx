@@ -3,14 +3,24 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 
 export default function App() {
-  const handleClick = (event) => {
-    console.log("Hello World!");
-    console.log(event);
-  }
+  // State to hold the visibility status of the paragraph
+  const [isParagraphVisible, setIsParagraphVisible] = useState(true);
+
+  // Function to toggle the visibility status of the paragraph
+  const toggleStatus = () => {
+    setIsParagraphVisible(!isParagraphVisible);
+  };
+
   return (
-    <button onClick={handleClick}>
-      click me
-    </button>
+    <>
+      <h1>Change UI Based on click</h1>
+      {isParagraphVisible && (
+        <p>This paragraph will be shown/hidden on click</p>
+      )}
+      <button onClick={toggleStatus}>
+        {isParagraphVisible ? 'Hide' : 'Show'} Paragraph
+      </button>
+    </>
   )
   
 }
