@@ -8,11 +8,29 @@ import { useState } from 'react'
 
 export default function Form() {
   const [username, setUsername] = useState();
+  const [usernameError, setUsernameError] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(username);
+    if(usernameError){
+      alert('Unable to submit: Form contain errors');
+    } else {
+      alert(username);
+    }
+
+    
   }
+
+  const handleUsername = e => {
+    const {value} = e.target;
+    setUsername(value);
+
+    if(value.length <= 6) {
+      setUsernameError('Username length must be more than 6 characters');
+    } else {
+      setUsername();
+    }
+  };
 
   return (
     <>
@@ -21,8 +39,9 @@ export default function Form() {
       <input 
         type='text' 
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={handleUsername}
       />
+      <p>{usernameError} </p>
       <button>Submit</button>
       </form>
 
