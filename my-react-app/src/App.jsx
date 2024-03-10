@@ -5,10 +5,18 @@ import { useState } from 'react'
 export default function App(props) {
   const { user } = props
 
+  let button = <button>Login</button>
+
   if (user) {
-    return <button>Logout</button>
+    button = <button>Logout</button>
   }
-  return <button>Login</button>
+
+  return (
+    <>
+      <h1>Hello there!</h1>
+      {button}
+    </>
+  )
   
 }
 
