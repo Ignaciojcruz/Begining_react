@@ -8,18 +8,25 @@ import { useState } from 'react'
 
 export default function Form() {
   const [username, setUsername] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(username);
+  }
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
       Username:
       <input 
         type='text' 
         value={username}
-        onChange={e => setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
       />
-    </form>
+      <button>Submit</button>
+      </form>
 
-    <p>{username}</p>
+    
     </>
     
   )
